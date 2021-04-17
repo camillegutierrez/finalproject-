@@ -28,8 +28,8 @@ if __name__ == '__main__':
     light_sensor = 0 # Connect the Grove Light Sensor to analog port A0
     sound_sensor = 1 # Connect the Grove Sound Sensor to analog port A1
 
-	grovepi.pinMode(light_sensor,"INPUT")
-	grovepi.pinMode(sound_sensor, "INPUT")
+    grovepi.pinMode(light_sensor,"INPUT")
+    grovepi.pinMode(sound_sensor, "INPUT")
 	time.sleep(1)
 
 	while True:
