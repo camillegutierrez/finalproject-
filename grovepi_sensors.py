@@ -30,7 +30,7 @@ if __name__ == '__main__':
 
     grovepi.pinMode(light_sensor,"INPUT")
     grovepi.pinMode(sound_sensor, "INPUT")
-	time.sleep(1)
+    time.sleep(1)
 
 	while True:
 
