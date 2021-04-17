@@ -32,22 +32,20 @@ if __name__ == '__main__':
     grovepi.pinMode(sound_sensor, "INPUT")
     time.sleep(1)
 
-	while True:
+    while True:
 
-		try:
-			# Read sensor value from light_sensor
-			light_value = grovepi.analogRead(light_sensor)
+        try:
+            # Read sensor value from light_sensor
+            light_value = grovepi.analogRead(light_sensor)
             print(light_value)
             # Read sensor value from sound_sensor
-			sound_value = grovepi.analogRead(sound_sensor)
+            sound_value = grovepi.analogRead(sound_sensor)
             print(sound_value)
 
             # ADD: Send light and sound data to the cloud
 
-
-			#So we do not poll the sensors too quickly which may introduce noise,
-			#sleep for a reasonable time of 200ms between each iteration.
-			time.sleep(0.2)
-
-		except Exception as e:
-			print (e)
+            #So we do not poll the sensors too quickly which may introduce noise,
+            #sleep for a reasonable time of 200ms between each iteration.
+            time.sleep(0.2)
+        except Exception as e:
+            print (e)
