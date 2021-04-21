@@ -12,13 +12,13 @@ import sys
 import time
 # By appending the folder of all the GrovePi libraries to the system path here,
 # we are successfully `import grovepi`
-sys.path.append('../../Software/Python/')
+#####sys.path.append('../../Software/Python/')
 # This append is to support importing the LCD library.
-sys.path.append('../../Software/Python/grove_rgb_lcd')
+#######sys.path.append('../../Software/Python/grove_rgb_lcd')
 
-import grovepi
-from grove_rgb_lcd import *
-from grovepi import *
+#####import grovepi
+#####from grove_rgb_lcd import *
+#####from grovepi import *
 
 """This if-statement checks if you are running this python file directly. That
 is, if you run `python3 grovepi_sensors.py` in terminSal, this if-statement will
@@ -28,24 +28,31 @@ if __name__ == '__main__':
     light_sensor = 0 # Connect the Grove Light Sensor to analog port A0
     sound_sensor = 1 # Connect the Grove Sound Sensor to analog port A1
 
-    grovepi.pinMode(light_sensor,"INPUT")
-    grovepi.pinMode(sound_sensor, "INPUT")
+    ####grovepi.pinMode(light_sensor,"INPUT")
+    ####grovepi.pinMode(sound_sensor, "INPUT")
     time.sleep(1)
+
+    import socket,json
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+  
 
     while True:
 
         try:
             # Read sensor value from light_sensor
-            light_value = grovepi.analogRead(light_sensor)
-            print(light_value)
+            light_value = 1#grovepi.analogRead(light_sensor)
+            #print(light_value)
             # Read sensor value from sound_sensor
-            sound_value = grovepi.analogRead(sound_sensor)
-            print(sound_value)
+            sound_value = 2#grovepi.analogRead(sound_sensor)
+            
 
+            data = {"sound":sound_value, "light": light_value}
+            datastring = json.dumps(data)
+            print(datastring)
             # ADD: Send light and sound data to the cloud
-
+            s.sendto(datastring.encode(), ("52.152.229.29", 8080))
             #So we do not poll the sensors too quickly which may introduce noise,
             #sleep for a reasonable time of 200ms between each iteration.
-            time.sleep(0.2)
+            time.sleep(1)
         except Exception as e:
             print (e)
