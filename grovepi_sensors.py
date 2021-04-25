@@ -34,17 +34,17 @@ if __name__ == '__main__':
 
     import socket,json
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-  
+
 
     while True:
 
         try:
             # Read sensor value from light_sensor
-            grovepi.analogRead(light_sensor)
+            light_value = grovepi.analogRead(light_sensor)
             #print(light_value)
             # Read sensor value from sound_sensor
-            grovepi.analogRead(sound_sensor)
-            
+            sound_value = grovepi.analogRead(sound_sensor)
+
             data = {"sound":sound_value, "light": light_value}
             datastring = json.dumps(data)
             print(datastring)
