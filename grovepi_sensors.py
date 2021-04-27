@@ -33,26 +33,32 @@ if __name__ == '__main__':
     time.sleep(1)
 
     import socket,json
+    import numpy as np
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 
     while True:
 
         try:
+            now = time.time()
+            sound_values = []
+            while (time.time() - now) < 1:
+                sound_values += [grovepi.analogRead(sound_sensor)]
+            sound_std = np.std(sound_values)
             # Read sensor value from light_sensor
             #light_value = grovepi.analogRead(light_sensor)
             light_value= 1
             #print(light_value)
             # Read sensor value from sound_sensor
-            sound_value = grovepi.analogRead(sound_sensor)
 
-            data = {"sound":sound_value, "light": light_value}
+
+            data = {"sound":sound_std, "light": light_value}
             datastring = json.dumps(data)
             print(datastring)
             # ADD: Send light and sound data to the cloud
             #s.sendto(datastring.encode(), ("52.152.229.29", 8080))
             #So we do not poll the sensors too quickly which may introduce noise,
-            #sleep for a reasonable time of 200ms between each iteration.
-            time.sleep(0.001)
+            #sleep for a reasonable time between each iteration.
+            time.sleep(1)
         except Exception as e:
             print (e)
