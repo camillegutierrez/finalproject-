@@ -40,7 +40,8 @@ if __name__ == '__main__':
 
         try:
             # Read sensor value from light_sensor
-            light_value = grovepi.analogRead(light_sensor)
+            #light_value = grovepi.analogRead(light_sensor)
+            light_value= 1
             #print(light_value)
             # Read sensor value from sound_sensor
             sound_value = grovepi.analogRead(sound_sensor)
@@ -49,9 +50,9 @@ if __name__ == '__main__':
             datastring = json.dumps(data)
             print(datastring)
             # ADD: Send light and sound data to the cloud
-            s.sendto(datastring.encode(), ("52.152.229.29", 8080))
+            #s.sendto(datastring.encode(), ("52.152.229.29", 8080))
             #So we do not poll the sensors too quickly which may introduce noise,
             #sleep for a reasonable time of 200ms between each iteration.
-            time.sleep(1)
+            time.sleep(0.1)
         except Exception as e:
             print (e)
