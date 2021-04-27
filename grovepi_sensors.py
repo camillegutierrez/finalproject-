@@ -43,14 +43,12 @@ if __name__ == '__main__':
             now = time.time()
             sound_values = []
             while (time.time() - now) < 1:
+                # Read sensor value from sound_sensor
                 sound_values += [grovepi.analogRead(sound_sensor)]
             sound_std = np.std(sound_values)
             # Read sensor value from light_sensor
-            #light_value = grovepi.analogRead(light_sensor)
-            light_value= 1
+            light_value = grovepi.analogRead(light_sensor)
             #print(light_value)
-            # Read sensor value from sound_sensor
-
 
             data = {"sound":sound_std, "light": light_value}
             datastring = json.dumps(data)
