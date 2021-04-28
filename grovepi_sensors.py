@@ -55,7 +55,9 @@ if __name__ == '__main__':
             print(datastring)
             # ADD: Send light and sound data to the cloud
             s.sendto(datastring.encode(), ("52.152.229.29", 8080))
-            #So we do not poll the sensors too quickly which may introduce noise,
-            #sleep for a reasonable time between each iteration.
+
+            intruder, addr = s.recvfrom(1024)
+            print("Intruder?: %s" % intruder)
+
         except Exception as e:
             print (e)
