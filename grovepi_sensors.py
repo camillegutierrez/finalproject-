@@ -42,7 +42,7 @@ if __name__ == '__main__':
         try:
             now = time.time()
             sound_values = []
-            while (time.time() - now) < 1:
+            while (time.time() - now) < 0.5:
                 # Read sensor value from sound_sensor
                 sound_values += [grovepi.analogRead(sound_sensor)]
             sound_std = np.std(sound_values)
