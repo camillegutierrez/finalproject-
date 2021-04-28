@@ -57,6 +57,5 @@ if __name__ == '__main__':
             #s.sendto(datastring.encode(), ("52.152.229.29", 8080))
             #So we do not poll the sensors too quickly which may introduce noise,
             #sleep for a reasonable time between each iteration.
-            time.sleep(1)
         except Exception as e:
             print (e)
