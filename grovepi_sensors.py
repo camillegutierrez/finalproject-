@@ -34,7 +34,10 @@ if __name__ == '__main__':
 
     import socket,json
     import numpy as np
+    UDP_IP = "52.152.229.29"
+    UDP_PORT = 8080
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.bind((UDP_IP, UDP_PORT))
 
 
     while True:
@@ -54,7 +57,7 @@ if __name__ == '__main__':
             datastring = json.dumps(data)
             print(datastring)
             # ADD: Send light and sound data to the cloud
-            s.sendto(datastring.encode(), ("52.152.229.29", 8080))
+            s.sendto(datastring.encode(), (UDP_IP, UDP_PORT))
 
             intruder, addr = s.recvfrom(1024)
             print("Intruder?: %s" % intruder)
