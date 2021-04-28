@@ -37,7 +37,6 @@ if __name__ == '__main__':
     UDP_IP = "52.152.229.29"
     UDP_PORT = 8080
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.bind(('', UDP_PORT))
 
 
     while True:
@@ -60,6 +59,7 @@ if __name__ == '__main__':
             s.sendto(datastring.encode(), (UDP_IP, UDP_PORT))
 
             intruder, addr = s.recvfrom(1024)
+            intruder = intruder.decode()
             print("Intruder?: %s" % intruder)
 
         except Exception as e:
