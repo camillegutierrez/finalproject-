@@ -54,7 +54,7 @@ if __name__ == '__main__':
             datastring = json.dumps(data)
             print(datastring)
             # ADD: Send light and sound data to the cloud
-            #s.sendto(datastring.encode(), ("52.152.229.29", 8080))
+            s.sendto(datastring.encode(), ("52.152.229.29", 8080))
             #So we do not poll the sensors too quickly which may introduce noise,
             #sleep for a reasonable time between each iteration.
         except Exception as e:
