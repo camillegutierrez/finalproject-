@@ -63,9 +63,11 @@ if __name__ == '__main__':
             print("Intruder?: %s" % intruder)
 
             if intruder == "Intruder":
-                setText_norefresh("Intruder in house.")
+                setText_norefresh("Intruder, beware")
+                setRGB(255,0,0)
             else:
-                setText_norefresh("House is safe.    ")
+                setText_norefresh("House is safe   ")
+                setRGB(0,255,0)
 
         except Exception as e:
             print (e)
