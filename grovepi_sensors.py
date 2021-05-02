@@ -62,5 +62,10 @@ if __name__ == '__main__':
             intruder = intruder.decode()
             print("Intruder?: %s" % intruder)
 
+            if intruder == "Intruder":
+                setText_norefresh("There is an intruder in the house. ")
+            else:
+                setText_norefresh("The house is safe from an intruder.")
+
         except Exception as e:
             print (e)
