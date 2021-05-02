@@ -1,1 +1,9 @@
-names: camille gutierrez and samantha taylor
+Team member names: Camille Gutierrez and Samantha Taylor
+
+Demo Video Link:
+
+How to compile code:
+  First, on your Azure VM, run the file udp_cloud_data.py to setup the server connection. Then on your rpi, run grovepi_sensors.py to setup the client connection.
+
+List of any external libraries that were used:
+  time, sys, grovepi, grove_rgb_lcd, socket, json, numpy
